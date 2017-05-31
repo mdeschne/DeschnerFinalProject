@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>YouTunage</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+
+    /* Remove the jumbotron's default bottom margin */
+     .jumbotron {
+      margin-bottom: 0;
+    }
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="panel-footer text-center"> </div>
+  <h1 class="panel-heading text-center" style="font-size:50px"> YouTunage Top Videos </h1>
+  <div class="panel-footer text-center">  </div>
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <iframe id="player"
+     width="640" height="360"
+            src="<%=@media.first.media_url.gsub("watch?v=","embed/")%>"
+    ></iframe>
+
+  </div>
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container text-center">
+<h1 class="panel-heading text-center"> <a  href="/media/<%= @media.first.id %>" ><%=@media.first.title%> </a></h1>
+    </div>
+    <div class="btn-group-justified">
+      <a href="/upvote/<%= @media.first.id %>" class="btn btn-success" style="font-size:30px"> <i class="fa fa-arrow-circle-up"> </i></a>
+      <a href="/downvote/<%= @media.first.id %>" class="btn btn-danger" rel="nofollow" style="font-size:30px"> <i class="fa fa-arrow-circle-down"></i></a>
+      <form class="btn btn-info" action="/create_favorite" method="post"
+            <!-- Hidden input for authenticity token to protect from forgery -->
+            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+            <!-- Label and input for user_id -->
+              <input type="hidden"  name="user_id"  class="form-control" value="<%= current_user.id %>">
+            <!-- Label and input for media_id -->
+              <input type="hidden" name="media_id"  class="form-control" value="<%= @media.first.id %>">
+
+          <button class="btn btn-info" style="border:none; font-size:30px"><i class="fa fa-heart"></i>
+          </button>
+        </form>
+      <h3  class="btn btn-primary" style="font-size:30px"> Score:<%= (@media.first.ups - @media.first.downs) %></h3>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading text-center"> <a  href="/media/<%= @media.second.id %>" ><%=@media.second.title%> </a></div>
+        <div class="panel-body">
+          <div class="item">
+            <iframe id="player"
+                    src="<%=@media.second.media_url.gsub("watch?v=","embed/")%>"
+                    class="img-responsive" style="width:100%"  alt="Image"
+            ></iframe>
+          </div>
+        </div>
+        <div class="btn-group-justified">
+          <a href="/upvote/<%= @media.second.id %>" class="btn btn-success" style="font-size:15px"> <i class="fa fa-arrow-circle-up"> </i></a>
+          <a href="/downvote/<%= @media.second.id %>" class="btn btn-danger" rel="nofollow" style="font-size:15px"> <i class="fa fa-arrow-circle-down"></i></a>
+          <form class="btn btn-info" action="/create_favorite" method="post"
+                <!-- Hidden input for authenticity token to protect from forgery -->
+                <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                <!-- Label and input for user_id -->
+                  <input type="hidden"  name="user_id"  class="form-control" value="<%= current_user.id %>">
+                <!-- Label and input for media_id -->
+                  <input type="hidden" name="media_id"  class="form-control" value="<%= @media[1].id %>">
+
+              <button class="btn btn-info" style="border:none; font-size:15px"><i class="fa fa-heart"></i>
+              </button>
+            </form>
+          <h3  class="btn btn-primary" style="font-size:15px"> Score:<%= (@media.second.ups - @media.second.downs)%></h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+      <div class="panel-heading text-center"> <a  href="/media/<%= @media.third.id %>" ><%=@media.third.title%> </a></div>
+        <div class="panel-body">
+          <div class="item">
+            <iframe id="player"
+                    src="<%=@media.third.media_url.gsub("watch?v=","embed/")%>"
+                    class="img-responsive" style="width:100%" alt="Image"
+            ></iframe>
+          </div>
+        </div>
+        <div class="btn-group-justified">
+          <a href="/upvote/<%= @media[2].id %>" class="btn btn-success" style="font-size:15px"> <i class="fa fa-arrow-circle-up"> </i></a>
+          <a href="/downvote/<%= @media[2].id %>" class="btn btn-danger" rel="nofollow" style="font-size:15px"> <i class="fa fa-arrow-circle-down"></i></a>
+          <form class="btn btn-info" action="/create_favorite" method="post"
+                <!-- Hidden input for authenticity token to protect from forgery -->
+                <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                <!-- Label and input for user_id -->
+                  <input type="hidden"  name="user_id"  class="form-control" value="<%= current_user.id %>">
+                <!-- Label and input for media_id -->
+                  <input type="hidden" name="media_id"  class="form-control" value="<%= @media[2].id %>">
+
+              <button class="btn btn-info" style="border:none; font-size:15px"><i class="fa fa-heart"></i>
+              </button>
+            </form>
+          <h3  class="btn btn-primary" style="font-size:15px"> Score:<%= (@media[2].ups - @media[2].downs) %></h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+      <div class="panel-heading text-center"> <a  href="/media/<%= @media.fourth.id %>" ><%=@media.fourth.title%> </a></div>
+        <div class="panel-body">
+          <div class="item">
+            <iframe id="player"
+                    src="<%=@media.fourth.media_url.gsub("watch?v=","embed/")%>"
+                    class="img-responsive" style="width:100%" alt="Image"
+            ></iframe>
+          </div>
+        </div>
+        <div class="btn-group-justified">
+          <a href="/upvote/<%= @media[3].id %>" class="btn btn-success" style="font-size:15px"> <i class="fa fa-arrow-circle-up"> </i></a>
+          <a href="/downvote/<%= @media[3].id %>" class="btn btn-danger" rel="nofollow" style="font-size:15px"> <i class="fa fa-arrow-circle-down"></i></a>
+          <form class="btn btn-info" action="/create_favorite" method="post"
+                <!-- Hidden input for authenticity token to protect from forgery -->
+                <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                <!-- Label and input for user_id -->
+                  <input type="hidden"  name="user_id"  class="form-control" value="<%= current_user.id %>">
+                <!-- Label and input for media_id -->
+                  <input type="hidden" name="media_id"  class="form-control" value="<%= @media[3].id %>">
+
+              <button class="btn btn-info" style="border:none; font-size:15px"><i class="fa fa-heart"></i>
+              </button>
+            </form>
+          <h3  class="btn btn-primary" style="font-size:15px"> Score:<%= (@media[3].ups - @media[3].downs)%></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+      <div class="panel-heading text-center"> <a  href="/media/<%= @media.fifth.id %>" ><%=@media.fifth.title%> </a></div>
+        <div class="panel-body">
+          <div class="item">
+            <iframe id="player"
+                    src="<%=@media.fifth.media_url.gsub("watch?v=","embed/")%>"
+                    class="img-responsive" style="width:100%" alt="Image"
+            ></iframe>
+          </div>
+        </div>
+        <div class="btn-group-justified">
+          <a href="/upvote/<%= @media[4].id %>" class="btn btn-success" style="font-size:15px"> <i class="fa fa-arrow-circle-up"> </i></a>
+          <a href="/downvote/<%= @media[4].id %>" class="btn btn-danger" rel="nofollow" style="font-size:15px"> <i class="fa fa-arrow-circle-down"></i></a>
+          <form class="btn btn-info" action="/create_favorite" method="post"
+                <!-- Hidden input for authenticity token to protect from forgery -->
+                <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                <!-- Label and input for user_id -->
+                  <input type="hidden"  name="user_id"  class="form-control" value="<%= current_user.id %>">
+                <!-- Label and input for media_id -->
+                  <input type="hidden" name="media_id"  class="form-control" value="<%= @media[4].id %>">
+
+              <button class="btn btn-info" style="border:none; font-size:15px"><i class="fa fa-heart"></i>
+              </button>
+            </form>
+          <h3  class="btn btn-primary" style="font-size:15px"> Score:<%= (@media[4].ups - @media[4].downs) %></h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+      <div class="panel-heading text-center"> <a  href="/media/<%= @media[5].id %>" ><%=@media[5].title%></a></div>
+        <div class="panel-body">
+          <div class="item">
+            <iframe id="player"
+                    src="<%=@media[5].media_url.gsub("watch?v=","embed/")%>"
+                    class="img-responsive" style="width:100%" alt="Image"
+            ></iframe>
+          </div>
+        </div>
+        <div class="btn-group-justified">
+          <a href="/upvote/<%= @media[5].id %>" class="btn btn-success" style="font-size:15px"> <i class="fa fa-arrow-circle-up"> </i></a>
+          <a href="/downvote/<%= @media[5].id %>" class="btn btn-danger" rel="nofollow" style="font-size:15px"> <i class="fa fa-arrow-circle-down"></i></a>
+          <form class="btn btn-info" action="/create_favorite" method="post"
+                <!-- Hidden input for authenticity token to protect from forgery -->
+                <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                <!-- Label and input for user_id -->
+                  <input type="hidden"  name="user_id"  class="form-control" value="<%= current_user.id %>">
+                <!-- Label and input for media_id -->
+                  <input type="hidden" name="media_id"  class="form-control" value="<%= @media[5].id %>">
+
+              <button class="btn btn-info" style="border:none; font-size:15px"><i class="fa fa-heart"></i>
+              </button>
+            </form>
+          <h3  class="btn btn-primary" style="font-size:15px"> Score:<%= (@media[5].ups - @media[5].downs) %></h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+      <div class="panel-heading text-center"> <a  href="/media/<%= @media[6].id %>" ><%=@media[6].title%> </a></div>
+        <div class="panel-body">
+          <div class="item">
+            <iframe id="player"
+                    src="<%=@media[6].media_url.gsub("watch?v=","embed/")%>"
+                    class="img-responsive" style="width:100%" alt="Image"
+            ></iframe>
+          </div>
+        </div>
+        <div class="btn-group-justified">
+          <a href="/upvote/<%= @media[6].id %>" class="btn btn-success" style="font-size:15px"> <i class="fa fa-arrow-circle-up"> </i></a>
+          <a href="/downvote/<%= @media[6].id %>" class="btn btn-danger" rel="nofollow" style="font-size:15px"> <i class="fa fa-arrow-circle-down"></i></a>
+          <form class="btn btn-info" action="/create_favorite" method="post"
+                <!-- Hidden input for authenticity token to protect from forgery -->
+                <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                <!-- Label and input for user_id -->
+                  <input type="hidden"  name="user_id"  class="form-control" value="<%= current_user.id %>">
+                <!-- Label and input for media_id -->
+                  <input type="hidden" name="media_id"  class="form-control" value="<%= @media[6].id %>">
+
+              <button class="btn btn-info" style="border:none; font-size:15px"><i class="fa fa-heart"></i>
+              </button>
+            </form>
+          <h3  class="btn btn-primary" style="font-size:15px"> Score:<%= (@media[6].ups - @media[6].downs) %></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><br><br>
+
+
+</body>
+</html>
+<br>
+<br><br>
+
+<br>
+<div class="panel-footer text-center"> </div>
+<h1 class="panel-heading text-center" style="font-size:60px"> The Rest </h1>
+<div class="panel-footer text-center">  </div>
+
+<br>
+<br>
+      <% @media[7..-1].each do |medium| %>
+
+      <tr>
+        <div class="jumbotron">
+          <div class="container text-center">
+            <iframe id="player"
+             width="640" height="360"
+                    src="<%= medium.media_url.gsub("watch?v=","embed/")%>"
+            ></iframe>
+
+          </div>
+    <div class="panel-footer text-center"> <a  href="/media/<%= medium.id %>" ><%=medium.title%> </a></div>
+    <div class="btn-group-justified">
+      <a href="/upvote/<%= medium.id %>" class="btn btn-success" style="font-size:20px"> <i class="fa fa-arrow-circle-up"></i></a>
+      <a href="/downvote/<%= medium.id %>" class="btn btn-danger" rel="nofollow" style="font-size:20px"> <i class="fa fa-arrow-circle-down"></i></a>
+      <form class="btn btn-info" action="/create_favorite" method="post"
+            <!-- Hidden input for authenticity token to protect from forgery -->
+            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+            <!-- Label and input for user_id -->
+              <input type="hidden"  name="user_id"  class="form-control" value="<%= current_user.id %>">
+            <!-- Label and input for media_id -->
+              <input type="hidden" name="media_id"  class="form-control" value="<%= medium.id %>">
+
+          <button class="btn btn-info" style="border:none; font-size:20px"><i class="fa fa-heart"></i>
+          </button>
+        </form>
+      <h3  class="btn btn-primary" style="font-size:20px"> Score:<%= (medium.ups - medium.downs) %></h3>
+    </div>
+        </td>
+      </tr>
+      <br>
+      <% end %>
+  </div>

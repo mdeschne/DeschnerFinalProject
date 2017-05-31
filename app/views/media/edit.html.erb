@@ -1,0 +1,73 @@
+<!-- Validation failure messages -->
+<% if @medium.errors.any? %>
+  <% @medium.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Medium #<%= @medium.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_medium/<%= @medium.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for media_url -->
+      <div class="form-group">
+        <label for="media_url" class="control-label">
+          Media url
+        </label>
+
+        <input type="text" id="media_url" name="media_url" placeholder="Media url" class="form-control" value="<%= @medium.media_url %>">
+      </div>
+
+      <!-- Label and input for ups -->
+      <div class="form-group">
+        <label for="ups" class="control-label">
+          Ups
+        </label>
+
+        <input type="text" id="ups" name="ups" placeholder="Ups" class="form-control" value="<%= @medium.ups %>">
+      </div>
+
+      <!-- Label and input for downs -->
+      <div class="form-group">
+        <label for="downs" class="control-label">
+          Downs
+        </label>
+
+        <input type="text" id="downs" name="downs" placeholder="Downs" class="form-control" value="<%= @medium.downs %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @medium.user_id %>">
+      </div>
+
+      <!-- Label and input for title -->
+      <div class="form-group">
+        <label for="title" class="control-label">
+          Title
+        </label>
+
+        <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @medium.title %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Medium
+      </button>
+      or
+      <a href="/media/<%= @medium.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

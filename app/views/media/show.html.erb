@@ -1,0 +1,45 @@
+<div class="jumbotron">
+  <div class="container text-center">
+    <iframe id="player"
+     width="640" height="360"
+            src="<%=@medium.media_url.gsub("watch?v=","embed/")%>"
+    ></iframe>
+
+  </div>
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container text-center">
+<h1 class="panel-heading text-center" ><%=@medium.title%> </h1>
+
+    </div>
+    <div class="btn-group-justified">
+      <a href="/upvote/<%= @medium.id %>" class="btn btn-success" style="font-size:30px"> <i class="fa fa-arrow-circle-up"> </i></a>
+      <a href="/downvote/<%= @medium.id %>" class="btn btn-danger" rel="nofollow" style="font-size:30px"> <i class="fa fa-arrow-circle-down"></i></a>
+      <a  class="btn btn-info" style="font-size:30px"> <i class="fa fa-heart"></i></a>
+      <h3  class="btn btn-primary" style="font-size:30px"> Score:<%= (@medium.ups - @medium.downs) %></h3>
+    </div>
+  </div>
+</nav>
+
+    <div class="btn-group btn-block btn-group-vertical">
+      <a href="/media" class="btn btn-primary">
+        Home
+      </a>
+
+
+      <%
+      if @medium.user_id == current_user.id%>
+            <a href="/media/<%= @medium.id %>/edit" class="btn btn-warning">
+              Edit
+            </a>
+
+            <a href="/delete_medium/<%= @medium.id %>" class="btn btn-danger" rel="nofollow">
+              Delete
+            </a>
+        <%   else %>
+
+        <%   end  %>
+    </div>
+  </div>
+</div>

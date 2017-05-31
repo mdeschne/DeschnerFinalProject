@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h3>Add #<%= @add.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Media</dt>
+      <dd><%= @add.media_id %></dd>
+
+      <dt>Playlist</dt>
+      <dd><%= @add.playlist_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/adds" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/adds/<%= @add.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_add/<%= @add.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
