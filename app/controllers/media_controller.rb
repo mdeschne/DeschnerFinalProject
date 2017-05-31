@@ -2,7 +2,8 @@ class MediaController < ApplicationController
   def index
     @media = Medium.all
     @users = User.all
-      #  @media.sort! { |x,y| x.ups <=> y.ups }
+    # Medium.all.order(:ups => :desc)
+    @media = @media.sort {|a,b| (b.ups - b.downs) <=> (a.ups - a.downs)}
     render("media/index.html.erb")
   end
 
