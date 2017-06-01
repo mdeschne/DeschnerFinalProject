@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # User.destroy_all
 
-usernames = ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot"]
+# usernames = ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot"]
 #
 # usernames.each do |username|
 #   user = User.create
@@ -18,3 +18,18 @@ usernames = ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot"]
 # end
 #
 # puts "There are now #{User.count} users in the database."
+
+# media = Medium.all
+# users = User.all
+#
+# media.each do |medium|
+#   rand(6).times do
+#     comment = Comment.new
+#     comment.medium_id = medium.id
+#     comment.user_id = users.sample.id
+#     comment.body = Faker::Hacker.say_something_smart
+#     comment.save
+#   end
+# end
+#
+# puts "There are now #{Comment.count} comments in the database."

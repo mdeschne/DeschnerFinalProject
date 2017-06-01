@@ -10,8 +10,10 @@
 #
 
 class Favorite < ApplicationRecord
-validates :user_id, :presence => true
-validates :media_id, :presence => true
+validates :user_id, :presence => true, :uniqueness => { :scope => :medium }
+# validates :media_id, :presence => true
+
+
   belongs_to(:user, class_name: "User", foreign_key: "user_id")
   belongs_to(:medium, class_name: "Medium", foreign_key: "media_id")
 end

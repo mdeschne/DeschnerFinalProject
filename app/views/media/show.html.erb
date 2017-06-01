@@ -1,7 +1,7 @@
 <div class="jumbotron">
   <div class="container text-center">
-    <iframe id="player"
-     width="640" height="360"
+    <iframe id="player" style= "max-width:640px"
+     width="100%" height="360"
             src="<%=@medium.media_url.gsub("watch?v=","embed/")%>"
     ></iframe>
 
@@ -20,11 +20,56 @@
       <h3  class="btn btn-primary" style="font-size:30px"> Score:<%= (@medium.ups - @medium.downs) %></h3>
     </div>
     <div class="container text-center">
-  Linked by <a href= "/users/<%=@medium.user_id%>"> <%=@medium.user.username%>
+  Linked by <a href= "/users/<%=@medium.user_id%>"> <%=@medium.user.username%></a>
   </div>
-  </div>
-</nav>
 
+</nav>
+<div class="container-justified well ">
+<% @comments.each do |comment| %>
+<tr>
+          <dl class="dl-horizontal">
+  <%
+  if comment.medium_id == @medium.id%>
+      <td> <%=comment.body %></td> - <td> <a href= "/users/<%=comment.user.id%>"> <%=comment.user.username %></a>
+<div class="fif" style="font-size:10px">
+         <%=time_ago_in_words(comment.created_at) %> ago</div>
+  <div class="fif">
+<%if comment.user_id == current_user.id%>
+    <a href="/comments/<%= comment.id %>/edit" class="btn-xs btn-warning">Edit</a>
+    <a href="/delete_comment/<%= comment.id %>" class="btn-xs btn-danger" rel="nofollow">Delete</a>
+<% else %>
+<% end %>
+  </div>
+      </td>
+</dl>
+  <%
+  else
+  %>
+    <% end%>
+</tr>
+<% end %>
+
+<form action="/create_comment" method="post">
+  <!-- Hidden input for authenticity token to protect from forgery -->
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+  <!-- Label and input for medium_id -->
+    <input type="hidden" id="medium_id" name="medium_id" class="form-control" value="<%= @medium.id %>">
+
+  <!-- Label and input for body -->
+  <div class="form-group">
+    <textarea id="body" name="body" placeholder="Add comment..." class="form-control" rows="2"></textarea>
+  </div>
+
+  <!-- Label and input for user_id -->
+    <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%= current_user.id %>">
+
+  <button class="btn btn-success btn-block">
+    Post
+  </button>
+</form>
+
+</div>
     <div class="btn-group btn-block btn-group-vertical">
       <a href="/media" class="btn btn-primary">
         Home
@@ -46,3 +91,4 @@
     </div>
   </div>
 </div>
+<br>

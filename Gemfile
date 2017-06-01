@@ -14,6 +14,8 @@ group :development do
     gem "starter_generators", :git => 'git://github.com/raghubetina/starter_generators.git'
 end
 
+gem 'factory_girl_rails', group: [:test, :development]
+gem 'faker', group: [:test, :development]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'

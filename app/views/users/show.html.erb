@@ -16,8 +16,8 @@
 <% if medium.user_id == @users.id %>
   <div class="jumbotron">
     <div class="container text-center">
-      <iframe id="player"
-       width="640" height="360"
+      <iframe id="player" style= "max-width:640px"
+       width="100%" height="360"
               src="<%= medium.media_url.gsub("watch?v=","embed/")%>"
       ></iframe>
     </div>

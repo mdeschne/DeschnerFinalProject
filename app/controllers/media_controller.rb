@@ -1,9 +1,9 @@
 class MediaController < ApplicationController
 
-
   def index
     @media = Medium.all
     @users = User.all
+    @comments = Comment.all
     # Medium.all.order(:ups => :desc)
     @media = @media.sort {|a,b| (b.ups - b.downs) <=> (a.ups - a.downs)}
     render("media/index.html.erb")
@@ -12,7 +12,7 @@ class MediaController < ApplicationController
 
   def show
     @medium = Medium.find(params[:id])
-
+    @comments = Comment.all
     render("media/show.html.erb")
   end
 
