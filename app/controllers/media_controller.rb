@@ -1,4 +1,6 @@
 class MediaController < ApplicationController
+
+
   def index
     @media = Medium.all
     @users = User.all
@@ -32,7 +34,7 @@ class MediaController < ApplicationController
     save_status = @medium.save
 
     if save_status == true
-      redirect_to("/media/#{@medium.id}", :notice => "Medium created successfully.")
+      redirect_to("/media/#{@medium.id}", :notice => "Video added successfully.")
     else
       render("media/new.html.erb")
     end

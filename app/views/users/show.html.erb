@@ -1,25 +1,32 @@
-<h1 class="panel-heading text-center" style="font-size:60px"> <%= current_user.username %>'s Videos </h1>
 
+<!-- Score Counter -->
+<% userscore = 0 %>
 <% @media.each do |medium| %>
+<% if medium.user_id == @users.id %>
+<%userscore = userscore + (medium.ups - medium.downs) %>
+<% else %>
+<% end %>
+<% end %>
+<div class="panel-footer text-center"> </div>
+<h1 class="panel-heading text-center" style="font-size:60px"> <%= @users.username %> </h1>
+<div class="panel-footer text-center" style="font-size:20px"> Current Score: <%= userscore %> </div>
 
-<% if medium.user_id == current_user.id %>
-
-<tr>
+<h1 class="panel-heading text-center" style="font-size:40px"> Uploaded Videos </h1>
+<% @media.each do |medium| %>
+<% if medium.user_id == @users.id %>
   <div class="jumbotron">
     <div class="container text-center">
       <iframe id="player"
        width="640" height="360"
               src="<%= medium.media_url.gsub("watch?v=","embed/")%>"
       ></iframe>
-
     </div>
 <div class="panel-footer text-center"> <a  href="/media/<%= medium.id %>" ><%=medium.title%> </a></div>
 <div class="btn-group-justified">
 <h3  class="btn btn-primary" style="font-size:20px"> Score:<%= (medium.ups - medium.downs)%></h3>
 </div>
 </div>
+
 <% else %>
 <% end %>
-<br>
 <% end %>
-</div>

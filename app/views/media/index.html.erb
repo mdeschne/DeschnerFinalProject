@@ -42,8 +42,10 @@
 
 <nav class="navbar navbar-inverse">
   <div class="container text-center">
-<h1 class="panel-heading text-center"> <a  href="/media/<%= @media.first.id %>" ><%=@media.first.title%> </a></h1>
+<h1 class="panel-heading text-center"> <a  href="/media/<%= @media.first.id %>" ><%=@media.first.title%> </a> </h1>
+
     </div>
+
     <div class="btn-group-justified">
       <a href="/upvote/<%= @media.first.id %>" class="btn btn-success" style="font-size:30px"> <i class="fa fa-arrow-circle-up"> </i></a>
       <a href="/downvote/<%= @media.first.id %>" class="btn btn-danger" rel="nofollow" style="font-size:30px"> <i class="fa fa-arrow-circle-down"></i></a>
@@ -59,6 +61,9 @@
           </button>
         </form>
       <h3  class="btn btn-primary" style="font-size:30px"> Score:<%= (@media.first.ups - @media.first.downs) %></h3>
+    </div>
+      <div class="container text-center">
+    Linked by <a href= "/users/<%=@media.first.user_id%>"> <%=@media.first.user.username%>
     </div>
   </div>
 </nav>
@@ -92,6 +97,9 @@
             </form>
           <h3  class="btn btn-primary" style="font-size:15px"> Score:<%= (@media.second.ups - @media.second.downs)%></h3>
         </div>
+        <div class=" text-center">
+      Linked by <a href= "/users/<%=@media[1].user_id%>"> <%=@media[1].user.username%>
+      </div>
       </div>
     </div>
     <div class="col-sm-4">
@@ -121,6 +129,9 @@
             </form>
           <h3  class="btn btn-primary" style="font-size:15px"> Score:<%= (@media[2].ups - @media[2].downs) %></h3>
         </div>
+        <div class=" text-center">
+      Linked by <a href= "/users/<%=@media[2].user_id%>"> <%=@media[2].user.username%>
+      </div>
       </div>
     </div>
     <div class="col-sm-4">
@@ -150,6 +161,9 @@
             </form>
           <h3  class="btn btn-primary" style="font-size:15px"> Score:<%= (@media[3].ups - @media[3].downs)%></h3>
         </div>
+        <div class=" text-center">
+      Linked by <a href= "/users/<%=@media[3].user_id%>"> <%=@media[3].user.username%>
+      </div>
       </div>
     </div>
   </div>
@@ -184,6 +198,9 @@
             </form>
           <h3  class="btn btn-primary" style="font-size:15px"> Score:<%= (@media[4].ups - @media[4].downs) %></h3>
         </div>
+        <div class=" text-center">
+      Linked by <a href= "/users/<%=@media[4].user_id%>"> <%=@media[4].user.username%>
+      </div>
       </div>
     </div>
     <div class="col-sm-4">
@@ -213,6 +230,9 @@
             </form>
           <h3  class="btn btn-primary" style="font-size:15px"> Score:<%= (@media[5].ups - @media[5].downs) %></h3>
         </div>
+        <div class=" text-center">
+      Linked by <a href= "/users/<%=@media[5].user_id%>"> <%=@media[5].user.username%>
+      </div>
       </div>
     </div>
     <div class="col-sm-4">
@@ -242,16 +262,16 @@
             </form>
           <h3  class="btn btn-primary" style="font-size:15px"> Score:<%= (@media[6].ups - @media[6].downs) %></h3>
         </div>
+        <div class=" text-center">
+      Linked by <a href= "/users/<%=@media[6].user_id%>"> <%=@media[6].user.username%>
+      </div>
       </div>
     </div>
   </div>
-</div><br><br>
 
-
-</body>
-</html>
 <br>
-<br><br>
+
+<br>
 
 <br>
 <div class="panel-footer text-center"> </div>
@@ -288,8 +308,16 @@
         </form>
       <h3  class="btn btn-primary" style="font-size:20px"> Score:<%= (medium.ups - medium.downs) %></h3>
     </div>
+    <div class=" text-center">
+  Linked by <a href= "/users/<%=medium.user_id%>"> <%=medium.user.username%>
+  </div>
         </td>
       </tr>
       <br>
+        </div>
+        <br>
+        <div class="panel-footer text-center"> </div>
       <% end %>
   </div>
+</body>
+</html>

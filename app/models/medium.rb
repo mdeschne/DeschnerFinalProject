@@ -14,6 +14,8 @@
 
 class Medium < ApplicationRecord
 
+include ActiveModel::Validations
+validates_with YoutubeValidator
 validates :user_id, :presence => true
 validates :title, :presence => true
 validates :media_url, :presence => true
