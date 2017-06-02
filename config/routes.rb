@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  # Routes for the Feed Sorting
+  get "/top", :controller => "media", :action => "index"
+  get "/newest", :controller => "media", :action => "newest"
+  get "/worst", :controller => "media", :action => "worst"
+
   # Routes for the Comment resource:
   # CREATE
   get "/comments/new", :controller => "comments", :action => "new"

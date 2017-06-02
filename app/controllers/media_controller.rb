@@ -4,11 +4,28 @@ class MediaController < ApplicationController
     @media = Medium.all
     @users = User.all
     @comments = Comment.all
-    # Medium.all.order(:ups => :desc)
     @media = @media.sort {|a,b| (b.ups - b.downs) <=> (a.ups - a.downs)}
+    @order = "Top"
     render("media/index.html.erb")
   end
 
+  def newest
+     @media = Medium.all
+     @users = User.all
+     @comments = Comment.all
+     @media = @media.sort {|a,b| (b.created_at) <=> (a.created_at)}
+    @order = "Newest"
+     render("media/index.html.erb")
+   end
+
+   def worst
+     @media = Medium.all
+     @users = User.all
+     @comments = Comment.all
+     @media = @media.sort {|a,b| (a.ups - a.downs) <=> (b.ups - b.downs)}
+    @order = "Worst"
+     render("media/index.html.erb")
+   end
 
 
   def show
