@@ -90,7 +90,7 @@ class MediaController < ApplicationController
     save_status = @medium.save
 
     if save_status == true
-      redirect_to("/media/#{@medium.id}", :notice => "Medium updated successfully.")
+      redirect_to("/media/#{@medium.id}", :notice => "Video updated successfully.")
     else
       render("media/edit.html.erb")
     end
@@ -102,9 +102,9 @@ class MediaController < ApplicationController
     @medium.destroy
 
     if URI(request.referer).path == "/media/#{@medium.id}"
-      redirect_to("/", :notice => "Medium deleted.")
+      redirect_to("/", :notice => "Video deleted.")
     else
-      redirect_to(:back, :notice => "Medium deleted.")
+      redirect_to(:back, :notice => "Video deleted.")
     end
   end
 end

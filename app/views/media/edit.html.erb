@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Medium #<%= @medium.id %></h3>
+  <h3>Edit Video: <%= @medium.title %></h3>
 </div>
 
 <div class="row">
@@ -21,7 +21,7 @@
       <!-- Label and input for media_url -->
       <div class="form-group">
         <label for="media_url" class="control-label">
-          Media url
+          YouTube URL
         </label>
 
         <input type="text" id="media_url" name="media_url" placeholder="Media url" class="form-control" value="<%= @medium.media_url %>">
@@ -29,29 +29,20 @@
 
       <!-- Label and input for ups -->
       <div class="form-group">
-        <label for="ups" class="control-label">
-          Ups
-        </label>
 
-        <input type="text" id="ups" name="ups" placeholder="Ups" class="form-control" value="<%= @medium.ups %>">
+        <input type="hidden" id="ups" name="ups" placeholder="Ups" class="form-control" value="<%= @medium.ups %>">
       </div>
 
       <!-- Label and input for downs -->
       <div class="form-group">
-        <label for="downs" class="control-label">
-          Downs
-        </label>
 
-        <input type="text" id="downs" name="downs" placeholder="Downs" class="form-control" value="<%= @medium.downs %>">
+        <input type="hidden" id="downs" name="downs" placeholder="Downs" class="form-control" value="<%= @medium.downs %>">
       </div>
 
       <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @medium.user_id %>">
+        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @medium.user_id %>">
       </div>
 
       <!-- Label and input for title -->
@@ -64,7 +55,7 @@
       </div>
 
       <button class="btn btn-warning">
-        Update Medium
+        Update Video
       </button>
       or
       <a href="/media/<%= @medium.id %>">Cancel</a>
