@@ -49,6 +49,7 @@ class MediaController < ApplicationController
     @medium.user_id = params[:user_id]
     @medium.title = params[:title]
 
+    @medium.media_url = @medium.media_url.gsub("m.youtube", "www.youtube")
     save_status = @medium.save
 
     if save_status == true
