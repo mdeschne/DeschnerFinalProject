@@ -69,9 +69,9 @@ class MediaController < ApplicationController
     save_status = @medium.save
 
     if save_status == true
-      redirect_to("/media/", :notice => "Upvoted successfully.")
+      redirect_to(request.referrer, :notice => "Upvoted successfully.")
     else
-      render("media.html.erb")
+      redirect_to(request.referrer)
     end
   end
 
@@ -85,9 +85,9 @@ class MediaController < ApplicationController
     save_status = @medium.save
 
     if save_status == true
-      redirect_to("/media", :notice => "Downvoted successfully.")
+      redirect_to(request.referrer, :notice => "Downvoted successfully.")
     else
-      render("media.html.erb")
+      redirect_to(request.referrer)
     end
   end
 
