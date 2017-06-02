@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @comment.errors.any? %>
+  <% @comment.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header text-center">
+  <h1>Edit Comment on <%= @comment.medium.title %></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_comment/<%= @comment.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for medium_id -->
+      <div class="form-group">
+
+
+        <input type="hidden" id="medium_id" name="medium_id" placeholder="Medium" class="form-control" value="<%= @comment.medium_id %>">
+      </div>
+
+      <!-- Label and input for body -->
+      <div class="form-group">
+        <label for="title" class="control-label">
+          Revised Comment:
+        </label>
+
+        <textarea id="body" name="body" placeholder="Body" class="form-control" rows="3"><%= @comment.body %></textarea>
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+
+
+        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @comment.user_id %>">
+      </div>
+    <br>
+        <div style="text-align: center;">
+      <button class="btn btn-warning">
+        Update Comment
+      </button>
+      </div>
+      <br>
+            <div class="page-footer text-center" >
+      <a href="/media/<%= @comment.medium_id %>">Cancel</a>
+        </div>
+    </form>
+  </div>
+</div>

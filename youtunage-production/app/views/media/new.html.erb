@@ -1,0 +1,65 @@
+<!-- Validation failure messages -->
+<% if @medium.errors.any? %>
+  <% @medium.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header text-center" >
+  <h1>Link a Video</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_medium" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for title -->
+      <div class="form-group text-center">
+        <label for="title" class="control-label">
+          Video Title
+        </label>
+
+        <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @medium.title %>">
+      </div>
+      <br>
+      <!-- Label and input for media_url -->
+      <div class="form-group text-center">
+        <label for="media_url" class="control-label">
+          YouTube URL
+        </label>
+
+        <input type="text" id="media_url" name="media_url" placeholder="www.youtube.com/....." class="form-control" value="<%= @medium.media_url %>">
+
+
+      </div>
+
+
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+
+        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+
+            <input type="hidden" id="ups" name="ups" placeholder="User" class="form-control" value="0">
+                <input type="hidden" id="downs" name="downs" placeholder="User" class="form-control" value="0">
+      </div>
+
+      <br>
+      <div style="text-align: center;">
+      <button class="btn btn-success">
+        Create Medium
+      </button>
+      </div>
+      <br>
+      <div class="page-footer text-center" >
+        <a href="/media">Cancel</a>
+      </div>
+
+    </form>
+  </div>
+</div>

@@ -27,4 +27,5 @@ class User < ApplicationRecord
   validates :username, :presence => true
   has_many :media
   has_many :favorites
+  has_many :playlists
 end

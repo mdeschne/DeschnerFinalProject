@@ -1,0 +1,26 @@
+<h1 class="panel-heading text-center" style="font-size:60px"> <%= current_user.username %>'s Favorites </h1>
+
+<% @favorites.each do |favorite| %>
+
+<% if favorite.user_id == current_user.id %>
+
+<tr>
+  <div class="jumbotron">
+    <div class="container text-center">
+      <iframe id="player" style= "max-width:640px"
+       width="100%" height="360"
+              src="<%= favorite.medium.media_url.gsub("watch?v=","embed/")%>"
+      ></iframe>
+
+    </div>
+<div class="panel-footer text-center"> <a  href="/media/<%= favorite.medium.id %>" ><%=favoritemedium.title%> </a></div>
+<div class="btn-group-justified">
+<h3  class="btn btn-primary" style="font-size:20px"> Score:<%= (favorite.medium.ups - favorite.medium.downs) %></h3>
+</div>
+
+
+<% else %>
+<% end %>
+<br>
+<% end %>
+</div>

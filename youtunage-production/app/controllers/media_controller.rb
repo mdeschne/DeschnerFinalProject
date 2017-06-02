@@ -9,6 +9,7 @@ class MediaController < ApplicationController
     render("media/index.html.erb")
   end
 
+
   def show
     @medium = Medium.find(params[:id])
     @comments = Comment.all
