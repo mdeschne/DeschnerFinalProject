@@ -298,6 +298,8 @@
 
 <br>
 <br>
+<% if @media == nil %>
+<% else %>
       <% @media[7..-1].each do |medium| %>
 
       <tr>
@@ -337,5 +339,6 @@
         <div class="panel-footer text-center"> </div>
       <% end %>
   </div>
+  <% end %>
 </body>
 </html>
