@@ -8,3 +8,4 @@ class YoutubeValidator < ActiveModel::Validator
   end
 end
 end
+end
