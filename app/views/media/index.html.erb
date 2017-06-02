@@ -62,7 +62,19 @@
           <button class="btn btn-info" style="border:none; font-size:30px"><i class="fa fa-heart"></i>
           </button>
         </form>
-      <h3  class="btn btn-primary " style="font-size:30px"> Score:<%= (@media.first.ups - @media.first.downs) %></h3>
+      <h3  class="btn btn-primary score
+<% if (@media.first.ups - @media.first.downs) < 0 %>
+text-danger
+<% else %>
+      text-success
+<% end %>
+      " style="font-size:40px"> <%= (@media.first.ups - @media.first.downs) %>
+      <% if (@media.first.ups - @media.first.downs) < 0 %>
+<i class="fa fa-arrow-circle-down"> </i>
+      <% else %>
+<i class="fa fa-arrow-circle-up"> </i>
+      <% end %>
+    </h3>
     </div>
       <div class="container text-center">
     Linked by <a href= "/users/<%=@media.first.user_id%>"> <%=@media.first.user.username%>
@@ -99,7 +111,19 @@
               <button class="btn btn-info" style="border:none; font-size:15px"><i class="fa fa-heart"></i>
               </button>
             </form>
-          <h3  class="btn btn-primary" style="font-size:15px"> Score:<%= (@media.second.ups - @media.second.downs)%></h3>
+            <h3  class="btn btn-primary score
+      <% if (@media[1].ups - @media[1].downs) < 0 %>
+      text-danger
+      <% else %>
+            text-success
+      <% end %>
+            " style="font-size:20px"> <%= (@media[1].ups - @media[1].downs) %>
+            <% if (@media[1].ups - @media[1].downs) < 0 %>
+      <i class="fa fa-arrow-circle-down"> </i>
+            <% else %>
+      <i class="fa fa-arrow-circle-up"> </i>
+            <% end %>
+          </h3>
         </div>
         <div class=" text-center">
       Linked by <a href= "/users/<%=@media[1].user_id%>"> <%=@media[1].user.username%>
@@ -134,7 +158,19 @@
               <button class="btn btn-info" style="border:none; font-size:15px"><i class="fa fa-heart"></i>
               </button>
             </form>
-          <h3  class="btn btn-primary" style="font-size:15px"> Score:<%= (@media[2].ups - @media[2].downs) %></h3>
+            <h3  class="btn btn-primary score
+      <% if (@media[2].ups - @media[2].downs) < 0 %>
+      text-danger
+      <% else %>
+            text-success
+      <% end %>
+            " style="font-size:20px"> <%= (@media[2].ups - @media[2].downs) %>
+            <% if (@media[2].ups - @media[2].downs) < 0 %>
+      <i class="fa fa-arrow-circle-down"> </i>
+            <% else %>
+      <i class="fa fa-arrow-circle-up"> </i>
+            <% end %>
+          </h3>
         </div>
         <div class=" text-center">
       Linked by <a href= "/users/<%=@media[2].user_id%>"> <%=@media[2].user.username%>
@@ -169,7 +205,19 @@
               <button class="btn btn-info" style="border:none; font-size:15px"><i class="fa fa-heart"></i>
               </button>
             </form>
-          <h3  class="btn btn-primary" style="font-size:15px"> Score:<%= (@media[3].ups - @media[3].downs)%></h3>
+            <h3  class="btn btn-primary score
+      <% if (@media[3].ups - @media[3].downs) < 0 %>
+      text-danger
+      <% else %>
+            text-success
+      <% end %>
+            " style="font-size:20px"> <%= (@media[3].ups - @media[3].downs) %>
+            <% if (@media[3].ups - @media[3].downs) < 0 %>
+      <i class="fa fa-arrow-circle-down"> </i>
+            <% else %>
+      <i class="fa fa-arrow-circle-up"> </i>
+            <% end %>
+          </h3>
         </div>
         <div class=" text-center">
       Linked by <a href= "/users/<%=@media[3].user_id%>"> <%=@media[3].user.username%>
@@ -208,7 +256,19 @@
               <button class="btn btn-info" style="border:none; font-size:15px"><i class="fa fa-heart"></i>
               </button>
             </form>
-          <h3  class="btn btn-primary" style="font-size:15px"> Score:<%= (@media[4].ups - @media[4].downs) %></h3>
+            <h3  class="btn btn-primary score
+      <% if (@media[4].ups - @media[4].downs) < 0 %>
+      text-danger
+      <% else %>
+            text-success
+      <% end %>
+            " style="font-size:20px"> <%= (@media[4].ups - @media[4].downs) %>
+            <% if (@media[4].ups - @media[4].downs) < 0 %>
+      <i class="fa fa-arrow-circle-down"> </i>
+            <% else %>
+      <i class="fa fa-arrow-circle-up"> </i>
+            <% end %>
+          </h3>
         </div>
         <div class=" text-center">
       Linked by <a href= "/users/<%=@media[4].user_id%>"> <%=@media[4].user.username%>
@@ -243,7 +303,19 @@
               <button class="btn btn-info" style="border:none; font-size:15px"><i class="fa fa-heart"></i>
               </button>
             </form>
-          <h3  class="btn btn-primary" style="font-size:15px"> Score:<%= (@media[5].ups - @media[5].downs) %></h3>
+            <h3  class="btn btn-primary score
+      <% if (@media[5].ups - @media[5].downs) < 0 %>
+      text-danger
+      <% else %>
+            text-success
+      <% end %>
+            " style="font-size:20px"> <%= (@media[5].ups - @media[5].downs) %>
+            <% if (@media[5].ups - @media[5].downs) < 0 %>
+      <i class="fa fa-arrow-circle-down"> </i>
+            <% else %>
+      <i class="fa fa-arrow-circle-up"> </i>
+            <% end %>
+          </h3>
         </div>
         <div class=" text-center">
       Linked by <a href= "/users/<%=@media[5].user_id%>"> <%=@media[5].user.username%>
@@ -278,7 +350,19 @@
               <button class="btn btn-info" style="border:none; font-size:15px"><i class="fa fa-heart"></i>
               </button>
             </form>
-          <h3  class="btn btn-primary" style="font-size:15px"> Score:<%= (@media[6].ups - @media[6].downs) %></h3>
+            <h3  class="btn btn-primary score
+      <% if (@media[6].ups - @media[6].downs) < 0 %>
+      text-danger
+      <% else %>
+            text-success
+      <% end %>
+            " style="font-size:20px"> <%= (@media[6].ups - @media[6].downs) %>
+            <% if (@media[6].ups - @media[6].downs) < 0 %>
+      <i class="fa fa-arrow-circle-down"> </i>
+            <% else %>
+      <i class="fa fa-arrow-circle-up"> </i>
+            <% end %>
+          </h3>
         </div>
         <div class=" text-center">
       Linked by <a href= "/users/<%=@media[6].user_id%>"> <%=@media[6].user.username%> </a>
@@ -326,16 +410,26 @@
           <button class="btn btn-info" style="border:none; font-size:20px"><i class="fa fa-heart"></i>
           </button>
         </form>
-      <h3  class="btn btn-primary" style="font-size:20px"> Score:<%= (medium.ups - medium.downs) %></h3>
+        <h3  class="btn btn-primary score
+  <% if (medium.ups - medium.downs) < 0 %>
+  text-danger
+  <% else %>
+        text-success
+  <% end %>
+        " style="font-size:30px"> <%= (medium.ups - medium.downs) %>
+        <% if (medium.ups - medium.downs) < 0 %>
+  <i class="fa fa-arrow-circle-down"> </i>
+        <% else %>
+  <i class="fa fa-arrow-circle-up"> </i>
+        <% end %>
+      </h3>
     </div>
     <div class=" text-center">
   Linked by <a href= "/users/<%=medium.user_id%>"> <%=medium.user.username%>
   </div>
         </td>
       </tr>
-      <br>
         </div>
-        <br>
         <div class="panel-footer text-center"> </div>
       <% end %>
   </div>

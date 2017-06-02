@@ -17,19 +17,14 @@
      display: inline; /* Or inline-block */
  }
 
-/*
- .sh {
+ .score {
 
          Small headline
 
-  font-family: Gill Sans, Verdana;
-  font-size: 11px;
-  line-height: 14px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  font-family: Georgia, serif;
   font-weight: bold;
 }
-
+/*
 .lh
 {
          Large Headline

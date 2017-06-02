@@ -27,7 +27,19 @@
           <button class="btn btn-info" style="border:none; font-size:30px"><i class="fa fa-heart"></i>
           </button>
         </form>
-      <h3  class="btn btn-primary" style="font-size:30px"> Score:<%= (@medium.ups - @medium.downs) %></h3>
+        <h3  class="btn btn-primary score
+  <% if (@medium.ups - @medium.downs) < 0 %>
+  text-danger
+  <% else %>
+        text-success
+  <% end %>
+        " style="font-size:30px"> <%= (@medium.ups - @medium.downs) %>
+        <% if (@medium.ups - @medium.downs) < 0 %>
+  <i class="fa fa-arrow-circle-down"> </i>
+        <% else %>
+  <i class="fa fa-arrow-circle-up"> </i>
+        <% end %>
+      </h3>
     </div>
     <div class="container text-center">
   Linked by <a href= "/users/<%=@medium.user_id%>"> <%=@medium.user.username%></a>
